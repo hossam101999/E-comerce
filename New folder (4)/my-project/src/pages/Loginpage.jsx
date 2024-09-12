@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/authContext'; // تحديث المسار بناءً على موقع authContext.jsx
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -8,13 +7,11 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { login } = useAuth(); // استخدام login من context
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
+  
     try {
       const response = await fetch('http://localhost:5000/users/login', {
         method: 'POST',
@@ -23,8 +20,10 @@ const LoginPage = () => {
       });
       const result = await response.json();
       if (response.ok) {
-        login(result.token); 
-        navigate('/home');
+        // تخزين الـ token وتحديث حالة تسجيل الدخول
+        localStorage.setItem('accessToken', result.token);
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/home'); 
       } else {
         setError(result.message);
       }
@@ -34,6 +33,7 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

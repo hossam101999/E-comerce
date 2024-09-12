@@ -1,12 +1,13 @@
-// src/pages/RegisterPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/authContext'; 
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +19,8 @@ const RegisterPage = () => {
       });
       const result = await response.json();
       if (response.ok) {
+        const { token } = result; 
+        login(token, { name, email }); 
         navigate('/login'); 
       } else {
         console.error(result.message);

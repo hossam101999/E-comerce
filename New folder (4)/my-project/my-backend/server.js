@@ -14,21 +14,16 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadDir = path.join(__dirname, "uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
   },
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    const filename = Date.now() + ext;
-    cb(null, filename);
-  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // إضافة توقيت فريد للملف
+  }
 });
-const upload = multer({ storage: storage });
 
+const upload = multer({ storage: storage });
+app.use(express.urlencoded({ extended: true }));
 const dataPath = path.join(__dirname, "data", "data.json");
 if (!fs.existsSync(path.join(__dirname, "data"))) {
   fs.mkdirSync(path.join(__dirname, "data"), { recursive: true });
@@ -141,30 +136,33 @@ app.get("/posts", (req, res) => {
 
 app.post("/posts", upload.single("image"), (req, res) => {
   try {
+    // قراءة بيانات المنشورات والمستخدمين من الملفات
     const postsData = readPostsData();
     const usersData = readData();
 
+    // الحصول على بيانات المنشور من الجسم
     const newPost = req.body;
 
     if (!validatePost(newPost)) {
       return res.status(400).json({ message: "Invalid post data" });
     }
 
-    newPost.userId = req.user ? req.user.id : null; // تعيين userId من التوكن لو موجود
-    newPost.id = uuidv4();
-    newPost.comments = newPost.comments || [];
-    newPost.image = req.file ? req.file.filename : "";
+    
+    newPost.userId = req.user ? req.user.id : null;
+    newPost.id = uuidv4(); 
+    newPost.comments = newPost.comments || []; // تعيين قيمة افتراضية للتعليقات إذا لم تكن موجودة
+    newPost.image = req.file ? req.file.filename : ""; // تعيين اسم الصورة إذا تم تحميلها
 
     postsData.posts.push(newPost);
     writePostsData(postsData);
+
     res.status(201).json(newPost);
   } catch (error) {
     console.error("Error creating post:", error);
-    res
-      .status(500)
-      .json({ message: "Error creating post", error: error.message });
+    res.status(500).json({ message: "Error creating post", error: error.message });
   }
 });
+
 
 app.put("/posts/:id", (req, res) => {
   try {
