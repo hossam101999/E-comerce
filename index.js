@@ -10,6 +10,7 @@ const languageRoutes = require("./routes/languge");
 const fieldOfStudy = require("./routes/fieldOfStudy");
 const User = require("./models/user");
 const adminRoutes = require("./routes/admin");
+const scholarshipRoute= require("./routes/scholarship")
 
 const PORT = 3000;
 const app = express();
@@ -20,6 +21,7 @@ app.use(logsMiddlewares);
 
 
 app.use("/admin", adminRoutes);
+app.use("scholarships",scholarshipRoute);
 app.use(userRoutes);
 app.use("/languages",languageRoutes);
 app.use("/fieldOfStudy",fieldOfStudy);
