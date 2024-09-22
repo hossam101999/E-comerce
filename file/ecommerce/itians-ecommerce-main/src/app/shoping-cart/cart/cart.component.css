@@ -1,0 +1,284 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+.cart-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.cart-table th {
+  background-color: #2d5356;
+  color: white;
+  padding: 20px 0;
+  padding-left: 28px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.cart-table td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.cart-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cart-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.cart-table th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.cart-table th:last-child {
+  border-top-right-radius: 10px;
+}
+
+
+.quantity-control .btn {
+  padding: 5px 10px;
+
+
+  border-radius: 20px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+}
+
+
+
+.ddd {
+  border-radius: 20px;
+  border: 1px solid #004b44;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.btn-outline-danger {
+  border: none;
+  color: #ff5749;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.price {
+  color: #47c1bf;
+  font-weight: bold;
+}
+
+.card-summary {
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-summary h5 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-summary ul li {
+  border-bottom: 1px solid #e9ecef;
+  padding: 10px 0;
+}
+
+.card-summary ul li:last-child {
+  border-bottom: none;
+  font-weight: bold;
+}
+
+.card-summary input.form-control {
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #ced4da;
+}
+
+.card-summary button {
+  background-color: #ff5749;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.card-summary button:hover {
+  background-color: #c82333;
+}
+
+.apply {
+  background-color: #d09423;
+  color: white;
+  font-weight: bold;
+}
+
+.cart-header {
+  background-color: #004b44;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+}
+
+.cart-table th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.cart-table th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.owl-carousel .item {
+  position: relative;
+  height: 100vh;
+}
+
+.owl-carousel .carousel-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.owl-carousel .carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+}
+
+#display {
+  font-size: 20px;
+  margin: 0 2px;
+  padding: 0;
+}
+
+.quantity-control .btn {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  align-items:center;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: feedInOut 6s infinite, scaleUp 12s infinite alternate;
+  animation-play-state: running;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+@keyframes feedInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+
+  }
+}
+
+.feature:hover {
+  transform: scale(1.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation-play-state: paused;
+  color:#fff;
+  background-color:#2d5356;
+  font-size:bold
+}
+
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+
+  }
+}
+
+.feature i {
+  font-size: 24px;
+  color: #fbb034;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+
+.feature p {
+  font-size: 16px;
+  margin: 0;
+}
+
+@media screen and (max-width: 380px) {
+  .cart-table th, .cart-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .cart-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

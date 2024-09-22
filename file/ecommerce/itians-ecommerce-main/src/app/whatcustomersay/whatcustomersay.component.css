@@ -1,0 +1,17 @@
+.gradient-custom {
+  background: radial-gradient(50% 123.47% at 50% 50%, #2d5356 0%, #2d5356 90%, #d09423 100%),
+    linear-gradient(121.28deg, #2d5356 0%, #2d5356 85%, #d09423 100%),
+    linear-gradient(360deg, #2d5356 0%, #2d5356 85%, #d09423 100%),
+    radial-gradient(100% 164.72% at 100% 100%, #2d5356 0%, #2d5356 85%, #d09423 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #2d5356 0%, #2d5356 85%, #d09423 100%);
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+
+
+
+
+.carousel-indicators {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}

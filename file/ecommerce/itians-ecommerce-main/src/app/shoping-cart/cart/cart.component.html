@@ -1,0 +1,160 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <div>
+
+      </div>
+      <table class="cart-table cart-table d-none d-md-table">
+        <thead >
+          <tr>
+            <th >
+              Product
+            </th>
+            <th>title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th ></th>
+          </tr>
+        </thead>
+      </table>
+      @for (cart of carts; track cart.product.id) {
+      <div class="card mb-3">
+        <div class="row g-0 align-items-center">
+          <div class="col-12 col-md-2 d-flex justify-content-center">
+            <img
+              [src]="cart.productBody.image"
+              class="img-fluid rounded-start"
+              alt="Product Image"
+            />
+          </div>
+          <div class="col-12 col-md-3 d-flex align-items-center text-center">
+            <div class="card-body">
+              <h5 class="card-title">{{ cart.productBody.title }}</h5>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 d-flex align-items-center justify-content-center">
+            <div class="ddd quantity-control d-flex align-items-center">
+              <button class="btn" type="button" id="button" style="
+                  width: 30px;
+                  height: 30px;
+                  line-height: 30px;
+                  text-align: center;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                (click)="increaseQuantity(cart.product.id)"
+              >
+                +
+              </button>
+              <input
+                type="text"
+                class="form-control text-center border-0 rounded-0"
+                [(ngModel)]="cart.quantity"
+                readonly
+                id="display"
+                style="width: 50px; font-size: 20px; padding: 0; margin: 0 2px"
+              />
+              <button
+                class="btn"
+                (click)="decreaseQuantity(cart.product.id)"
+                type="button"
+                id="button"
+                style="
+                  width: 30px;
+                  height: 30px;
+                  line-height: 30px;
+                  text-align: center;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                -
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-2 d-flex align-items-center justify-content-center"
+          >
+            <span class="fw-bold price">{{ cart.productBody.price }} EGP</span>
+          </div>
+
+          <div
+            class="col-12 col-md-1 d-flex align-items-center justify-content-center"
+          >
+           
+            <i class="fa-solid fa-trash fs-5 text-danger"(click)="removeItem(cart.productBody)"></i>
+
+          </div>
+        </div>
+      </div>
+      } @empty {
+      <img src="/empty-cart-2130356-1800917.webp" class="img-fluid mx-auto d-block" alt="Empty Cart"
+        style="max-width: 100%; height: auto" />
+      }
+
+
+    </div>
+
+    <div class="col-lg-4">
+      <table class="cart-table">
+        <thead>
+          <tr class="text-center align-items-center">
+            <th colspan="2" style="
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                font-weight: bolder;
+                text-align: center;
+              ">
+              Order Summary
+            </th>
+          </tr>
+        </thead>
+      </table>
+
+      <div class="card p-3">
+        <h5>Have a voucher?</h5>
+        <input type="text" class="form-control mb-3" placeholder="Enter voucher code" [(ngModel)]="voucherCode" />
+        <button class="btn w-100 mb-3 apply" (click)="applyVoucher()">Apply</button>
+
+        <ul class="list-group">
+
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Total
+            <span class="fw-bold">{{ getTotalPrice() }} EGP</span>
+          </li>
+        </ul>
+        <button class="btn w-100 mt-3 apply"(click)="checkOut()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <i class="fas fa-shipping-fast"></i>
+      <p>Fast & Free Shipping</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Easy to Shop</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-headset"></i>
+      <p>24/7 Support</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-undo"></i>
+      <p>Hassle Free Returns</p>
+    </div>
+  </div>
+
+
+
+
+</div>
+<div>
+  <app-carsel></app-carsel>
+
+</div>

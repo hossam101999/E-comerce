@@ -1,0 +1,74 @@
+<div class="header-main sticky-top">
+  <div class="container d-flex align-items-center justify-content-between ">
+    <a routerLink="/" class="logo">
+      <img
+        src="WhatsApp_Image_2024-08-24_at_12.06.29_PM__1_-removebg-preview.png"
+        alt=""
+      />
+    </a>
+
+    <nav
+      class="navbar navbar-expand-lg"
+      [ngClass]="{ active: navbarVisible }"
+      *ngIf="!searchActive"
+      style="box-shadow: none"
+    >
+      <a routerLink="/" routerLinkActive="active-link">Home</a>
+      <a class="nav-link" routerLink="/product" routerLinkActive="active"
+        >Products</a
+      >
+      <a routerLink="/about-us" routerLinkActive="active-link">About Us</a>
+      <a routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
+      <a routerLink="/login" routerLinkActive="active-link" *ngIf="!isAuthenticated" class="d-md-none">Login</a>
+      <a *ngIf="isAuthenticated" (click)="logout()" class="d-md-none">Logout</a>
+
+    </nav>
+
+    <div  class="header-icons ">
+      <a *ngIf="isAuthenticated" routerLink="/Favourite" routerLinkActive="active-link"
+        ><i class="fas fa-heart"></i
+      ></a>
+      <a
+      
+        class="position-relative"
+        routerLink="/cart"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span
+          class="badge rounded-pill position-absolute top-0 start-100 translate-middle text-white"
+          style="background-color: #d09423"
+          >{{ totalCartItems }}</span
+        >
+      </a>
+
+      <a
+        *ngIf="isAuthenticated; else loginLink"
+        routerLink="/UserProfile"
+        routerLinkActive="active-route"
+      >
+        <img [src]="userImage" alt="User Image" class="user-image" />
+      </a>
+
+      <ng-template #loginLink>
+        <a
+          routerLink="/login"
+          class="btn  btn-sm  d-none d-md-block"
+          style="margin-left: 30px ;background:#d09423;"
+          >Login</a
+        >
+      </ng-template>
+
+      <a
+        *ngIf="isAuthenticated"
+        class="text-white   d-none d-md-block"
+        (click)="logout()"
+        ><i class="fa-solid fa-right-from-bracket text-danger fs-4"></i></a
+      >
+    </div>
+
+    <div class="toggle-menu" (click)="toggleNavbar()">☰</div>
+
+    
+  </div>
+</div>

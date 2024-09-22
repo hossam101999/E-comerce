@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <div class="row position-relative">
+    <section class="slide-wrapper col-md-7 ">
+      <div id="myCarousel" class="carousel">
+
+        <ul class="carousel-indicators">
+          <li *ngFor="let indicator of indicators; let i = index" [ngClass]="{'active': i === currentIndex}"
+            (click)="showSlide(i)"></li>
+        </ul>
+
+
+        <div class="carousel-inner">
+          <div *ngFor="let slide of slides; let i = index" class="item" [ngClass]="{'active': i === currentIndex}">
+            <div class="fill" [ngStyle]="{'background-color': slide.bgColor}">
+              <div class="inner-content">
+                <div class="carousel-img">
+                  <img [src]="slide.image" [alt]="slide.altText" class="img img-responsive">
+                </div> 
+                <div class="carousel-desc">
+                  <h2>{{ slide.title }}</h2>
+                  <p>{{ slide.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="carousel-control left" href="#" role="button" id="prevSlide" (click)="prevSlide()">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control right" href="#" role="button" id="nextSlide" (click)="nextSlide()">
+          <span class="glyphicon glyphicon-chevron-down"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </section>
+
+
+    
+    
+    <div class="order-summary col-md-5  text-center d-flex flex-column ">
+  
+      <div class="section offers-section">
+        <div class="offer-card exclusive-offer">
+          <div class="offer-content">
+            <span class="offer-label">Exclusive Offer</span>
+  
+            <h2>Best Online Deals, Free Stuff</h2>
+            <p>Only on this week... Don't miss</p>
+            <button class="btn btn button">Get Best Deal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

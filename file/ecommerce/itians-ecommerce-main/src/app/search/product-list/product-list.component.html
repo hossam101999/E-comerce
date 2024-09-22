@@ -1,0 +1,32 @@
+<div class="container ">
+  <div class="row product-list">
+    <p class="fs-4">
+      Showing {{ (p - 1) * 6 + 1 }} - {{ p * 6 > products.length ? products.length : p * 6 }} of {{ products.length }} results
+    </p>
+
+
+    <ng-container *ngIf="noData">
+      <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+        <app-loader></app-loader>
+      </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="!noData">
+      <div class="col-12 col-md-12 col-lg-4 mb-4" *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: p }">
+        <app-card [product]="product"></app-card>
+      </div>
+    </ng-container>
+  </div>
+
+ 
+  <div class="d-flex justify-content-end mt-2">
+    <pagination-controls
+      (pageChange)="onPageChange($event)"
+      [maxSize]="5"
+      [directionLinks]="true"
+      [autoHide]="true"
+      class="my-pagination">
+    </pagination-controls>
+  </div>
+</div>

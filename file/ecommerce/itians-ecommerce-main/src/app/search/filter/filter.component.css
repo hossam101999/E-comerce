@@ -1,0 +1,59 @@
+.selected {
+    color: #d09423;
+    background-color: #f8f9fa; 
+  }
+
+ .radioSelected{
+  border-color: #d09423;
+  background-color: #d09423;
+ }
+
+  .form-check-label {
+    cursor: pointer;
+  }
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-bar {
+    background: #e5e5e5;
+    height: 3px;
+  }
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-selection {
+    background: #d09423;
+    height: 3px;
+  }
+
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer {
+    margin-left: -8px;
+    position: absolute;
+    top: auto;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    cursor: ew-resize;
+    background-color: #d09423;
+    box-sizing: border-box;
+    margin-top: -8px;
+    margin-left: auto;
+    opacity: 1;
+  }
+
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-model-value,
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-model-high,
+  ::ng-deep .custom-slider .ngx-slider .ngx-slider-bubble {
+    display: none;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick {
+    width: 1px;
+    height: 15px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: white;
+    top: -1px;
+  }

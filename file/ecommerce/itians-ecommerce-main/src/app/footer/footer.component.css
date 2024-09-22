@@ -1,0 +1,35 @@
+.footer {
+  background-color: #2d5356; 
+}
+
+.footer h4 {
+  color: #d09423; 
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.footer a {
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #d09423; 
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: #1a1a1a;
+}
+
+.footer-bottom a {
+  color: #d09423; 
+}
+
+.footer-bottom img {
+  vertical-align: middle;
+}
+
+.footer-bottom i {
+  font-size: 1.5rem;
+}

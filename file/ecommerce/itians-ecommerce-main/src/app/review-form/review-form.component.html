@@ -1,0 +1,52 @@
+<form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+  <div class="container mt-4">
+    <div class="table-container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr class="no-border">
+            <th class="text-end ">Form</th>
+            <th class="text-start ">Details</th>
+          </tr>
+          
+        </thead>
+        <tbody>
+          
+          
+           
+              <input type="hidden" [(ngModel)]="productId" name="productId" />
+          
+          
+
+          <tr class="mb-3">
+            <td class="form-label text-warning">Rating:</td>
+            <td>
+              <div class="rating d-flex justify-content-center">
+                <span *ngFor="let star of stars; let i = index" (click)="setRating(i + 1)"
+                  [class.filled]="rating >= i + 1" [attr.title]="i + 1 + ' star'" class="me-2">
+                  ★
+                </span>
+              </div>
+              <input class="justify-content-center"  type="hidden" [(ngModel)]="rating" name="rating" required>
+            </td>
+          </tr>
+
+          <tr class="mb-3">
+            <td class="form-label text-primary">Your Review:</td>
+            <td>
+              <textarea id="reviewContent" class="form-control" [(ngModel)]="newReviewContent" name="reviewContent"
+                required maxlength="150"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="snackbar" class="d-none"></div>
+
+    </div>
+  </div>
+</form>

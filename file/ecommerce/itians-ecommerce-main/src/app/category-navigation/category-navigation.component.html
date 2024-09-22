@@ -1,0 +1,17 @@
+<div class="container mb-4">
+  <h2 class="text-center text-capitalize fw-bold">
+    Trending products for you!
+  </h2>
+
+  <div class="d-flex justify-content-center">
+    <div class="btn-group mb-0 text-capitalize fw-medium">
+      <button
+        *ngFor="let category of categories"
+        (click)="onCategorySelect(category)"
+        class="btn category-btn"
+      >
+        {{ category }}
+      </button>
+    </div>
+  </div>
+</div>

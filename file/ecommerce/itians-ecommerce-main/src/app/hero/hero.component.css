@@ -1,0 +1,51 @@
+.promo-section {
+  background-color: #2d5356;
+  padding: 10px 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.promo-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+}
+
+.background-text {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-10%, -50%);
+  font-size: 80px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.315);
+  z-index: 1;
+}
+
+.promo-title {
+  font-size: 50px;
+}
+
+.promo-description {
+  font-size: 25px;
+}
+
+@media (max-width: 768px) {
+  .promo-title {
+    font-size: 1.2rem;
+  }
+
+  .promo-price {
+    font-size: 1rem;
+  }
+
+  .promo-section {
+    border-radius: 10px;
+  }
+
+  .promo-image {
+    height: 120px;
+  }
+}

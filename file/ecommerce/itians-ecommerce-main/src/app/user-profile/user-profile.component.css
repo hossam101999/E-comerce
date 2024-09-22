@@ -1,0 +1,252 @@
+
+body {
+  background-color: #e9ecf2;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar {
+  background-color: #34504d;
+  padding: 20px;
+  border-right: 1px solid #dee2e6;
+  height: 85vh;
+  margin-top: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  margin-left: 50px;
+}
+
+.user-info img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.user-info h3 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+
+.nav-link {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.nav-link.active {
+  color: #d09423;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #d09423;
+}
+
+
+.profile-form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin-top: 30px;
+}
+
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.profile-header h2 {
+  font-size: 24px;
+  color: #34504d;
+}
+
+
+.form-label {
+  color: #d09423;
+}
+
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  color: #2d5356;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #d09423;
+  box-shadow: 0 0 0 0.2rem rgba(208, 148, 35, 0.25);
+}
+
+
+.btn-primary {
+  background-color: #2d5356;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #2d5356;
+}
+
+#edit-password-btn {
+  background-color: #d09423;
+  color: #fff;
+}
+
+#edit-password-btn:hover {
+  background-color: #fff;
+  color: #d09423;
+}
+
+#cancel-btn {
+  background-color: red;
+  color: #fff;
+}
+
+#cancel-btn:hover {
+  background-color: #fff;
+  color: red;
+}
+
+
+.container-fluid {
+  padding: 0;
+}
+
+.left-column {
+  margin-right: 16px;
+}
+
+.form-check-label {
+  color: #d09423;
+}
+
+.form-check-input:checked {
+  background-color: #d09423;
+  border-color: #d09423;
+  box-shadow: 0 0 0 0.2rem rgba(208, 148, 35, 0.25);
+}
+
+
+.profile-image {
+  width: 300px;
+  height: 200px;
+  background-color: transparent;
+  object-fit: contain;
+  margin-left: -32px;
+}
+
+.uploaded-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    height: auto;
+    margin-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: none;
+  }
+
+  .profile-form-container {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .user-info h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .profile-form-container {
+    padding: 20px;
+  }
+
+  .left-column {
+    margin-right: 0;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .profile-header h2 {
+    font-size: 20px;
+  }
+
+  .profile-form-container {
+    padding: 15px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #edit-password-btn, #cancel-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .uploaded-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 30px;
+  opacity: 0;
+  transform: translateX(-50%);
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+
+
+

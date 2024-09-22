@@ -1,0 +1,130 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 15px;
+}
+
+.section {
+  position: relative;
+  background-color: #ffffff;
+  padding: 0;
+  padding-left:30px ;
+  margin: 10px 0;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 30px;
+  border: 60px solid #2d5356;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+
+.section:nth-child(1)::before {
+  clip-path: polygon(50% 0%, 0% 0%, 0% 100%, 50% 0%, 30% 85%, 15% 85%, 15% 100%, 0% 100%);
+}
+
+.section:nth-child(2)::before {
+  clip-path: polygon(0% 0%, 30% 15%, 5% 100%, 100% 100%, 100% 0%);
+}
+
+.section:nth-child(3)::before {
+  clip-path: polygon(0% 0%, 50% 0%, 100% 85%, 15% 85%, 15% 100%, 0% 100%);
+}
+
+.section:nth-child(4)::before {
+  clip-path: polygon(0% 0%, 30% 15%, 60% 100%, 100% 100%, 100% 0%);
+}
+
+
+.section img {
+  border-radius: 40px 500px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  transition: all 0.3s ease;
+}
+
+.section:hover img {
+  transform: scale(1.05);
+}
+
+.section-title {
+  font-size: 30px;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: bold;
+}
+
+
+
+.section-content {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.icon-box{
+  width: 80px;
+  height: 80px;
+  background-color: #f8f1e9;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 7px ;
+}
+
+.icon-box i {
+  font-size: 40px;
+  color: #d09423;
+
+
+}
+
+.image-wrapper {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .section {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .section img {
+      margin-bottom: 20px;
+  }
+}
+
+footer {
+  background-color: #2d5356;
+  color:#d09423 ;
+  text-align: center;
+  padding: 20px;
+}

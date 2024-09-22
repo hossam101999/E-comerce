@@ -1,0 +1,46 @@
+.loader-card {
+  border-radius: 20px;
+  .loader-image,
+  .loader-title,
+  .loader-price,
+  .loader-button {
+    background-color: #e0e0e0;
+    border-radius: 18px;
+    animation: pulse 1.5s infinite;
+  }
+
+  .loader-image {
+    height: 150px;
+    width: 100%;
+  }
+
+  .loader-title {
+    height: 20px;
+    width: 60%;
+    margin-top: 10px;
+  }
+
+  .loader-price {
+    height: 15px;
+    width: 20%;
+    margin-top: 5px;
+  }
+
+  .loader-button {
+    height: 40px;
+    width: 30%;
+    margin-top: 10px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}

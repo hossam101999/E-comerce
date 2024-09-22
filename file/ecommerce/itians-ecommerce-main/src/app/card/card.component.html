@@ -1,0 +1,64 @@
+<div class="card product-card shadow-sm">
+  <div
+    class="badge badge-warning discount-badge animate__animated animate__bounceIn"
+    *ngIf="product.discountPercentage"
+  >
+    {{ product.price | discountBadge : product.discountPercentage }}
+  </div>
+
+  <div class="favorite-btn" *ngIf="removeFavorite" (click)="toggleFavorite(product._id)">
+    <i
+      [ngClass]="getIconClass()"
+      [ngStyle]="{ color: isFavorite() ? 'red' : 'black' }"
+    ></i>
+  </div>
+  <a
+  [routerLink]="'/details/' + product._id"
+  class="text-decoration-none"
+  
+>
+  <div
+    class="d-flex justify-content-center align-items-center bg-light product-img-container"
+  >
+    <img
+      [src]="product.image"
+      [alt]="product.title"
+      class="product-img img-fluid animate__animated animate__fadeIn"
+    />
+  </div>
+</a>
+  <div class="card-body text-center">
+    <a
+      [routerLink]="'/details/' + product._id"
+      class="text-decoration-none"
+    >
+    <h5 class="product-title text-dark animate__animated animate__fadeInDown">
+      {{ product.title }}
+    </h5>
+
+    <div
+      class="product-pricing d-flex justify-content-center align-items-center"
+    >
+      <p class="text-danger fw-bold fs-5 mb-0">
+        {{
+          (product.price | discount : product.discountPercentage).split(" ")[1]
+        }}
+      </p>
+      <p
+        class="text-muted text-decoration-line-through ms-2 mb-0"
+        *ngIf="product.discountPercentage"
+      >
+        {{
+          (product.price | discount : product.discountPercentage).split(" ")[0]
+        }}
+      </p>
+    </div>
+  </a>
+    <button
+      class="btn btn-warning mt-3 w-100 animate__animated animate__fadeInUp"
+      (click)="addToCart(product)"
+    >
+      <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
+    </button>
+  </div>
+</div>

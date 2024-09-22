@@ -1,0 +1,33 @@
+<div class="container favorites-page mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-3 px-4 mt-3 favorite-sidebar">
+      <h2 class="fw-bold head">Card Favorites</h2>
+      <p class="text-white">
+        This is your favorite cards. Feel free to add them to your cart and
+        continue purchasing.
+      </p>
+    </div>
+    <div class="col-lg-9">
+      <div class="slider-container">
+        <div *ngIf="favoriteProducts && favoriteProducts.length > 0; else emptyState">
+          <div class="row">
+            <div
+              class="col-md-4 col-sm-6"
+              *ngFor="let product of favoriteProducts"
+            >
+              <app-card [product]="product" class="favorite-card"></app-card>
+            </div>
+          </div>
+        </div>
+        <ng-template #emptyState>
+          <img
+            src="/Empty.gif"
+            class="img-fluid mx-auto d-block"
+            alt="Empty Cart"
+            style="max-width: 100%; height: auto"
+          />
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

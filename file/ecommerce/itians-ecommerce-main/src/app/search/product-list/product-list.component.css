@@ -1,0 +1,61 @@
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .product-card h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+
+  .product-card p {
+    font-size: 1em;
+    margin: 5px 0;
+  }
+
+::ng-deep .my-pagination .ngx-pagination .current {
+  margin: 0px 10px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  border: 1px solid #f8f9fa;
+  background: #f7f7f7;
+  color: #d09423;
+
+}
+::ng-deep .my-pagination .ngx-pagination .pagination-next {
+  margin: 0px 10px;
+  padding: 8px ;
+  border-radius: 20px;
+  border: 1px solid #d09423;
+  color: #d09423;
+
+}
+::ng-deep .my-pagination .ngx-pagination .pagination-previous {
+  margin: 0px 10px;
+  padding: 8px ;
+  border-radius: 20px;
+  border: 1px solid #d09423;
+  color: #d09423;
+
+}
+::ng-deep .my-pagination .ngx-pagination  .disabled{
+
+  border: 1px solid grey;
+  color: gray;
+
+}
+::ng-deep .my-pagination .ngx-pagination .pagination-previous :hover {
+  /* apply hover effect here */
+  background-color: transparent;
+}
+::ng-deep .my-pagination .ngx-pagination .pagination-next :hover {
+  /* apply hover effect here */
+  background-color: transparent;
+}

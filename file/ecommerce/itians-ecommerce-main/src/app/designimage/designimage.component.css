@@ -1,0 +1,134 @@
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background-color: #2d5356;
+  color: #ffffff;
+  gap: 30px;
+}
+
+z .text-section {
+  width: 100%;
+  max-width: 45%;
+}
+
+.text-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.text-section p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.stats {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats span {
+  font-size: 1.1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.shop-now {
+  background-color: #d09423;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.shop-now:hover {
+  background-color: white;
+  color: #d09423;
+  transform: translateY(-3px);
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+}
+
+.slider img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .text-section {
+    max-width: 100%;
+  }
+
+  .stats {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .text-section h1 {
+    font-size: 2rem;
+  }
+
+  .text-section p {
+    font-size: 1rem;
+  }
+
+  .shop-now {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .slider {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slider img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.typing-container {
+  font-family: monospace;
+  font-size: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #000;
+  display: inline-block;
+  height: 1.2em;
+}

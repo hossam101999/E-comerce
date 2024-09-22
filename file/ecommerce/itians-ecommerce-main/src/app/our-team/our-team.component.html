@@ -1,0 +1,35 @@
+<h3 class="text-capitalize text-center my-4 fw-bold" style="color: #2d5356">
+  Our Team
+</h3>
+
+<div class="container mt-5">
+  <div class="owl-carousel">
+    <div class="col-md-4" *ngFor="let profile of profiles">
+      <div class="profile-card text-center mx-auto mb-3" style="width: 18rem">
+        <img
+          [src]="profile.image"
+          class="card-img-top profile-img mx-auto"
+          alt="Profile Picture"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ profile.name }}</h5>
+          <p class="card-text">{{ profile.title }}</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="mx-2" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="mx-2" aria-label="Twitter">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="#" class="mx-2" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="text-dark mx-2" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

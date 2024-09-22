@@ -1,0 +1,147 @@
+.table-container {
+    margin-top: 1rem;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.table {
+    border-spacing: 0 10px;
+    border-collapse: separate; 
+    border: none; 
+        
+    width: 50%;
+    margin: 0 auto; 
+}
+td.form-label.text-warning {
+    justify-content: center;
+    justify-items: center;
+    margin: auto;
+}
+.table thead th {
+    background-color: #2d5356; 
+    text-align: center;
+    color: white;
+    border: none;
+
+
+}
+.table thead  {
+    background-color: #2d5356; 
+ 
+}
+.table tbody td {
+    text-align: center;
+    padding: 20px 10px;
+    border: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.marginbotton {
+    margin-bottom: 1rem;
+}
+
+.table tbody td:first-child {
+    width: 50%;
+    border-radius: 20px 0 0 20px;
+}
+
+.table tbody td:last-child {
+    width: 50%;
+    border-radius: 0 20px 20px 0;
+}
+
+.table tbody tr:nth-child(even) td {
+    background-color: #6c757d2b; 
+}
+
+.rating {
+    font-size: 2rem; 
+    color: #2d5356; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.rating span {
+    transition: color 0.3s, transform 0.2s; 
+    cursor: pointer; 
+    margin: 0 0.2rem;
+    font-size: 2rem; 
+}
+
+.rating span.filled {
+    color: #e6a23c; 
+    transform: scale(1.2); 
+}
+
+.rating span:hover {
+    color: #e6a23c;
+}
+
+.notification {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+    animation: fadein 0.5s, fadeout 0.5s 1.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from { bottom: 0; opacity: 0; } 
+    to { bottom: 30px; opacity: 1; }
+  }
+  
+  @keyframes fadein {
+    from { bottom: 0; opacity: 0; } 
+    to { bottom: 30px; opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeout {
+    from { opacity: 1; } 
+    to { opacity: 0; }
+  }
+  
+  @keyframes fadeout {
+    from { opacity: 1; } 
+    to { opacity: 0; }
+  }
+  
+
+  

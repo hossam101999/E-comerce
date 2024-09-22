@@ -1,0 +1,128 @@
+
+<div id="snackbar" >
+</div>
+<div class="container my-2">
+  <div class="row">
+
+    <div class="col-md-3 sidebar">
+      <div class="user-info text-center">
+        <img
+          [src]="imageSrc"
+          class="uploaded-image"
+          alt="User Avatar"
+          id="user-avatar"
+        />
+        <h3>{{ userProfileForm.get('name')?.value || 'User Name' }}</h3>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">User Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Favourites</a>
+        </li>
+      </ul>
+      <img
+        src="/output-onlinepngtools__8_-removebg-preview.png"
+        alt="Profile Image"
+        class="profile-image"
+      />
+    </div>
+
+
+    <div class="col-md-8 d-flex justify-content-center align-items-center">
+      <div class="profile-form-container">
+        <div class="profile-header">
+          <h2>User Profile</h2>
+        </div>
+        <form [formGroup]="userProfileForm" (ngSubmit)="saveChanges()">
+          <div class="row">
+            <div class="col-md-6 left-column">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  formControlName="name"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label" >Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+
+                  [attr.disabled]="!userProfileForm.get('email')?.enabled ? true : null"
+                               />
+              </div>
+
+
+              <div class="mb-5">
+                <label for="image-upload" class="form-label">Upload Profile Image</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="image-upload"
+                  formControlName="image"
+                  (change)="onImageChange($event)"
+                  accept="image/*"
+                  [attr.disabled]="!userProfileForm.get('image')?.enabled ? true : null"
+
+
+
+                />
+              </div>
+              <button type="submit" class="btn btn-primary mt-1">Save Changes</button>
+            </div>
+            <div class="col-md-5">
+              <div class="mb-3">
+                <label for="current-password" class="form-label me-2">Current Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="current-password"
+                  formControlName="currentPassword"
+                  [attr.disabled]="!userProfileForm.get('currentPassword')?.enabled ? true : null"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="new-password" class="form-label">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="new-password"
+                  formControlName="newPassword"
+                  [attr.disabled]="!userProfileForm.get('newPassword')?.enabled ? true : null"
+                />
+              </div>
+              <div class="mb-1">
+                <label for="confirm-password" class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm-password"
+                  formControlName="confirmPassword"
+                  [attr.disabled]="!userProfileForm.get('confirmPassword')?.enabled ? true : null"
+                />
+              </div>
+              <button type="button" id="edit-password-btn" class="btn mt-5" (click)="enablePasswordFields()">
+                Edit
+              </button>
+              <button type="button" id="cancel-btn" class="btn" (click)="cancelChanges()">Cancel</button>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

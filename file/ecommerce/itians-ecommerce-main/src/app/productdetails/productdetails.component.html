@@ -1,0 +1,309 @@
+<div class="container my-5">
+
+  <div class="skeleton-screen" *ngIf="!product">
+    <div class="skeleton-img-card">
+      <div class="skeleton-img-card-image"></div>
+      <div class="skeleton-img-card-content"></div>
+      <div class="skeleton-img-card-btn"></div>
+    </div>
+  </div>
+
+  <div *ngIf="product">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-12 pt-1">
+        <div class="product-image">
+          <div *ngIf="!product" class="skeleton-img-card-image"></div>
+
+          <img
+            [src]="selectedImage || product?.thumbnail"
+            class="img-fluid"
+            alt="Product Image"
+          />
+
+          <div class="d-flex justify-content-between mt-3">
+            <div *ngIf="!product">
+              <div class="skeleton-img-card-btn"></div>
+              <div class="skeleton-img-card-btn"></div>
+            </div>
+
+            <button class="btn btn-outline-warning" (click)="prevImage()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="btn btn-outline-warning" (click)="nextImage()">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <div class="containe-imge mt-3">
+            <img
+              *ngFor="let img of product?.images; let i = index"
+              [src]="img"
+              [class.active]="img === selectedImage"
+              class="img-thumbnail mx-2"
+              (click)="selectImage(i)"
+              alt="Product Thumbnail"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 col-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge bg-light text-danger p-3 fs-3">
+            Save {{ savedAmount | currency : "USD" }} ({{
+              product.discountPercentage
+            }}%)
+          </span>
+        </div>
+        <div *ngIf="!product">
+          <div class="skeleton-img-card-content"></div>
+          <div class="skeleton-img-card-content"></div>
+          <div class="skeleton-img-card-btn"></div>
+        </div>
+        <h2 class="mb-4">{{ product.title }}</h2>
+        <p class="text-muted mb-2">Product code: {{ product.description }}</p>
+        <p class="text-muted mb-2">Brand: {{ product.brand }}</p>
+        <p class="text-success mb-2">In Stock: {{ product.stock }}</p>
+        <h4 class="text-">
+          ${{ getDiscountedPrice() | number : "1.2-2" }}
+          <small
+            class="text-muted text-decoration-line-through"
+            *ngIf="product.discountPercentage > 0"
+          >
+            ${{ product.price | number : "1.2-2" }}
+          </small>
+        </h4>
+
+        <div class="d-flex align-items-center mb-3">
+          <ng-container *ngIf="product.rating != null">
+            <ng-container *ngFor="let _ of getStars(product.rating).fullArray">
+              <i class="fa-solid fa-star star-yellow"></i>
+            </ng-container>
+            <ng-container *ngIf="getStars(product.rating).half">
+              <i class="fa-solid fa-star-half-alt star-yellow"></i>
+            </ng-container>
+          </ng-container>
+          <span class="ms-2"
+            >{{ product.rating | number : "1.2-2" }} ({{
+              product.reviews.length
+            }}
+            Reviews)</span
+          >
+        </div>
+        <ng-container *ngIf="showQuantityControls">
+          <div
+            id="counters"
+            class="d-flex mb-4 bg-light rounded-pill text-center"
+            style="max-width: 155px"
+          >
+            <button
+              class="btn rounded-circle col-1 border-0 mt-1 me-2"
+              (click)="decreaseQuantity()"
+            >
+              -
+            </button>
+            <p class="col-1 mx-1 me-1" style="margin-top: 10px">
+              {{ quantity }}
+            </p>
+            <button
+              class="btn rounded-circle border-0 ms-2 mt-1 col-1"
+              (click)="increaseQuantity()"
+            >
+              +
+            </button>
+          </div>
+        </ng-container>
+        <div class="d-flex flex-row mb-lg-4">
+          <button
+            class="btn btn-outline-secondary p-4"
+            *ngIf="!showQuantityControls"
+            (click)="addToCart()"
+          >
+            Add To Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs mt-5" id="productTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="details-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#details"
+          type="button"
+          role="tab"
+          aria-controls="details"
+          aria-selected="true"
+        >
+          Product Details
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+        class="nav-link"
+        id="reviews-tab"
+      
+        type="button"
+        role="tab"
+        aria-controls="reviews"
+        aria-selected="false"
+        (click)="reviewClick()"
+        [attr.data-bs-toggle]="isAuthenticated ? 'tab' : null"
+        [attr.data-bs-target]="isAuthenticated ? '#reviews' : null"
+      >
+        Customer Reviews
+      </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="description-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#description"
+          type="button"
+          role="tab"
+          aria-controls="description"
+          aria-selected="false"
+        >
+          view review
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="productTabsContent">
+      <div
+        class="tab-pane fade show active"
+        id="details"
+        role="tabpanel"
+        aria-labelledby="details-tab"
+      >
+        <h2 class="d-flex justify-content-center">Product Information</h2>
+        <div
+          class="product-details mt-4 row justify-content-center"
+          style="gap: 10px"
+        >
+          <div class="table-container col-sm-5">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="right">Features</th>
+                  <th class="leftt">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="marginbottom">
+                  <td>Brand</td>
+                  <td>{{ product?.brand || "" }}</td>
+                </tr>
+                <tr class="marginbottom">
+                  <td>returnPolicy</td>
+                  <td>{{ " with the reset in 10 days" }}</td>
+                </tr>
+                <tr>
+                  <td>Warranty Information</td>
+                  <td>{{ product?.warrantyInformation }}</td>
+                </tr>
+                <tr>
+                  <td>prices</td>
+                  <td>{{ product?.price || "" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-container col-sm-5">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="right">Features</th>
+                  <th class="leftt">Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="marginbottom">
+                  <td>Price</td>
+                  <td>{{ product.price }}</td>
+                </tr>
+                <tr class="marginbottom">
+                  <td>Dimensions</td>
+                  <td>{{ product.dimensions }}</td>
+                </tr>
+                <tr class="marginbottom">
+                  <td>Availability Status</td>
+                  <td>{{ "avalibal" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="tab-pane fade"
+        id="reviews"
+        role="tabpanel"
+        aria-labelledby="reviews-tab"
+      >
+        <app-review-form
+          [productId]="product?._id"
+          (reviewSubmitted)="handleReviewSubmission($event)"
+        ></app-review-form>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="description"
+        role="tabpanel"
+        aria-labelledby="description-tab"
+      >
+        <ng-container
+          *ngIf="product.reviews && product.reviews.length > 0; else noReviews"
+        >
+          <div class="customer-say mt-5 text-center p-4">
+            <h2 class="d-flex justify-content-center">What customers say</h2>
+          </div>
+
+          <div
+            *ngFor="let review of product.reviews"
+            class="customer-review mt-4 p-4 border-bottom"
+          >
+            <div class="d-flex justify-content-between flex-wrap">
+              <div class="d-flex flex-column align-items-center text-center">
+                <h5 class="fw-bold mb-1 d-flex align-items-center">
+                  <img
+                    [src]="review.user.image"
+                    alt="Reviewer Image"
+                    class="reviewer-image me-3"
+                  />
+                  {{ review.user.name }}
+                </h5>
+                <p class="m-2">{{ review.reviewText }}</p>
+              </div>
+              <div class="review-rating">
+                <h5 class="fw-bold mb-1">
+                  {{ review.createdAt | date : "MMMM yyyy" }}
+                </h5>
+                <ng-container
+                  *ngFor="let _ of getStars(review.rating).fullArray"
+                >
+                  <i class="fa-solid fa-star star-yellow"></i>
+                </ng-container>
+                <ng-container *ngIf="getStars(review.rating).half">
+                  <i class="fa-solid fa-star-half-alt star-yellow"></i>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #noReviews>
+          <div class="text-center mt-4">
+            <p>No reviews yet for this product you can add one</p>
+            <img src="vector-flat-cartoon-illustration-feedback-rating-stars-online_657235-88.avif" alt="No Reviews" class="img-fluid" />
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div></div>
+
+<div class="card">
+  <img
+    [src]="product.thumbnail || product.images[0]"
+    alt="{{ product.title }}"
+    class="card-img"
+  />
+
+  <div class="card-body" (click)="onSelectProduct()">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <hr />
+
+    @if (product.discountPercentage > 0) {
+    <p class="discounted-price">
+      <i class="fa-solid fa-badge-percent"></i> Discounted Price:
+      {{ product.price }} EGP
+    </p>
+    } @else {
+    <p class="price">{{ product.price }} EGP</p>
+    }
+
+    <div class="rating">
+      <ng-container
+        *ngFor="
+          let _ of [].constructor(
+            5 -
+              getStars(product.rating).full -
+              (getStars(product.rating).half ? 1 : 0)
+          )
+        "
+      >
+        <i class="fa-regular fa-star"></i>
+      </ng-container>
+    </div>
+    <div *ngIf="product">
+      <p [ngClass]="getStockInfo().statusClass">{{ getStockInfo().status }}</p>
+      <p [ngClass]="product.stock ? 'text-primary' : 'text-danger'"></p>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary w-100" (click)="addToCart()">to cart</button>
+  </div>
+</div>

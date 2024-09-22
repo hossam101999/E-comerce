@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="email-container bg-light p-4 rounded shadow-sm">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="text-primary">Subscribe to our Newsletter</h2>
+        <form (ngSubmit)="sendEmail()">
+          <div class="mb-3">
+            <label for="userEmail" class="form-label fw-bold">Your Email:</label>
+            <input
+              id="userEmail"
+              [(ngModel)]="userEmail"
+              name="userEmail"
+              placeholder="Enter your email"
+              type="email"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Send Email</button>
+        </form>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <img src="/Subscriber (3).gif" alt="Subscribe to our newsletter" class="img-fluid rounded" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="register-background">
+  <div class="register-container">
+    <img src="loogo.png" alt="ITIANS Electronics Logo" class="logo" />
+    <h2 class="register-title">Create your account</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+      <div class="form-content">
+        <div class="form-left">
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name:</label>
+            <input
+              id="name"
+              name="name"
+              formControlName="name"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': name?.invalid && (name?.dirty || name?.touched)
+              }"
+            />
+            <div
+              *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+              class="invalid-feedback"
+            >
+              Name is required and must be at least 3 characters long.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              id="email"
+              name="email"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': email?.invalid && (email?.dirty || email?.touched)
+              }"
+            />
+            <div
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+              class="invalid-feedback"
+            >
+              A valid email address is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-right">
+          <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input
+              id="password"
+              name="password"
+              formControlName="password"
+              type="password"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  password?.invalid && (password?.dirty || password?.touched)
+              }"
+            />
+            <div
+              *ngIf="
+                password?.invalid && (password?.dirty || password?.touched)
+              "
+              class="invalid-feedback"
+            >
+              Password must be at least 8 characters long and include a mix of
+              letters, numbers, and special characters.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword" class="form-label"
+              >Confirm Password:</label
+            >
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              formControlName="confirmPassword"
+              type="password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched) || (registerForm.errors?.['mismatch'] && confirmPassword?.dirty) }"
+            />
+            <div
+              *ngIf="confirmPassword?.errors?.['required'] && (confirmPassword?.dirty || confirmPassword?.touched)"
+              class="invalid-feedback"
+            >
+              Confirm Password is required.
+            </div>
+            <div
+              *ngIf="registerForm.errors?.['mismatch'] && confirmPassword?.dirty && !confirmPassword?.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Passwords do not match.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-block register-button"
+        [disabled]="registerForm.invalid || isLoading"
+      >
+        <ng-container *ngIf="isLoading; else signUpText"
+          >Signing Up...</ng-container
+        >
+        <ng-template #signUpText>Sign Up</ng-template>
+      </button>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+
+      <div class="register-footer">
+        <p>
+          Already have an account?
+          <a [routerLink]="['/login']" class="text-link">Sign in now.</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

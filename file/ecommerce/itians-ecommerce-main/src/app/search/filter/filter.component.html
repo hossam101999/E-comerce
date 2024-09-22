@@ -1,0 +1,82 @@
+<div>
+  <h3 class="mb-4">Filter Options</h3>
+
+  <div class="mb-4 p-3 border" style="border-radius: 16px;">
+    <h6>Category</h6>
+    <div
+      *ngFor="let category of categories"
+      class="form-check border px-5 py-3 mb-2 w-75"
+      [ngClass]="{'selected': selectedCategory === category.name}"
+      style="border-radius: 16px;"
+      (click)="onCategoryChange(category.name)"
+    >
+      <input
+        class="form-check-input"
+        type="radio"
+        name="category"
+        [ngClass]="{'radioSelected': selectedCategory === category.name}"
+        [value]="category.name"
+        [checked]="selectedCategory === category.name"
+        (change)="onCategoryChange(category.name)"
+      />
+      <label class="form-check-label">
+        {{ category.name }}
+      </label>
+    </div>
+  </div>
+
+  <div class="mb-4 p-3 border " style="border-radius: 16px;">
+    <h6>Price Range: {{ minPriceBarValue }} - {{ maxPriceBarValue }}</h6>
+    <div class="custom-slider">
+      <ngx-slider [(value)]="minPriceBarValue" 
+                  [(highValue)]="maxPriceBarValue" 
+                  [options]="optionsPrice" 
+                  (valueChange)="onValueChange($event)" 
+                  (highValueChange)="onHighValueChange($event)">
+      </ngx-slider>
+    </div>
+  </div>
+
+  <div class="mb-4 p-3 border " style="border-radius: 20px;">
+    <h6>Stock Availability</h6>
+    <div
+      class="form-check border px-5 py-3 mb-2 w-75"
+      [ngClass]="{'selected': sale === true}"
+      style="border-radius: 16px;"
+      (click)="onStockChange(true)"
+    >
+      <input
+        class="form-check-input"
+        type="radio"
+        name="stock"
+        [value]="true"
+        [ngClass]="{'radioSelected': sale === true}"
+        [checked]="sale === true"
+        (change)="onStockChange(true)"
+      />
+      <label class="form-check-label">
+        Have sale
+      </label>
+    </div>
+    <div
+      class="form-check border px-5 py-3 mb-2 w-75"
+      [ngClass]="{'selected': sale === false}"
+      style="border-radius: 16px;"
+      (click)="onStockChange(false)"
+    >
+      <input
+        class="form-check-input"
+        type="radio"
+        name="stock"
+        [value]="false"
+        [ngClass]="{'radioSelected': sale === false}"
+        [checked]="sale === false"
+        (change)="onStockChange(false)"
+      />
+      <label class="form-check-label">
+        Not have sale
+      </label>
+    </div>
+  </div>
+  
+</div>
